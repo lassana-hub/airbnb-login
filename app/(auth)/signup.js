@@ -10,7 +10,7 @@ import {
 import { useState } from "react";
 import { KeyboardAwareScrollView } from "react-native-keyboard-aware-scroll-view";
 
-import logo from "../assets/logo-airbnb.png";
+import logo from "../../assets/logo-airbnb.png";
 
 export default function Signup() {
   const [email, setEmail] = useState("");

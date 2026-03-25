@@ -1,8 +1,12 @@
-import { Stack, Tabs } from "expo-router";
+import { AuthContextProvider } from "../context/AuthContext";
+import RootNavigator from "../navigation/RootNavigation";
 
-const Layout = () => {
-  // il faut retourner le type de navoigateur que vous voulez
-  return <Tabs></Tabs>;
+const RootLayout = () => {
+  return (
+    <AuthContextProvider>
+      <RootNavigator />
+    </AuthContextProvider>
+  );
 };
 
-export default Layout;
+export default RootLayout;
