@@ -10,6 +10,8 @@ import {
 import { useState } from "react";
 import { KeyboardAwareScrollView } from "react-native-keyboard-aware-scroll-view";
 
+import axios from "axios";
+
 import logo from "../../assets/logo-airbnb.png";
 
 export default function Signup() {
@@ -47,7 +49,7 @@ export default function Signup() {
           password: password,
         },
       );
-      console.log(response.data);
+      // console.log(response.data);
       setErrorMessage("");
       alert("Sign up successful");
 
@@ -58,6 +60,7 @@ export default function Signup() {
         setErrorMessage(error.response.data.error || "Sign up failed");
       } else {
         setErrorMessage("An error occurred");
+        console.log(error.message);
       }
     }
   };
@@ -120,7 +123,7 @@ export default function Signup() {
             <Text style={styles.btnText}>Sign up</Text>
           </TouchableOpacity>
 
-          <Link href="/login">Already have an account ? Sign in</Link>
+          <Link href="/index">Already have an account ? Sign in</Link>
         </View>
       </View>
     </KeyboardAwareScrollView>

@@ -8,7 +8,7 @@ export default function RootNavigator() {
 
   return (
     <Stack screenOptions={{ headerShown: false }}>
-      <Stack.Protected guard={!userToken && userID}>
+      <Stack.Protected guard={!userToken && !userID}>
         <Stack.Screen name="(auth)" />
       </Stack.Protected>
 

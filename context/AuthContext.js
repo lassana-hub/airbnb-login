@@ -15,13 +15,12 @@ export default function AuthContextProvider({ children }) {
     setUserID(id);
   };
   const logout = () => {
-    setUserToken(false);
+    setUserToken("");
+    setUserID("");
   };
 
   return (
-    <AuthContext.Provider
-      value={{ userID, setUserID, userToken, setUserToken, login, logout }}
-    >
+    <AuthContext.Provider value={{ userID, userToken, login, logout }}>
       {children}
     </AuthContext.Provider>
   );

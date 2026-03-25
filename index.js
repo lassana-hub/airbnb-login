@@ -1,9 +1,11 @@
 import { View, Text, StyleSheet } from "react-native";
+import { Link } from "expo-router";
 
-export default function Rooms() {
+export default function HomePage() {
   return (
     <View style={styles.container}>
-      <Text style={styles.title}>Page rooms</Text>
+      <Text style={styles.title}>Bienvenue sur Expo Router !</Text>
+      <Link href="/login">Login</Link>
     </View>
   );
 }
