@@ -57,7 +57,7 @@ export default function Login() {
       behavior={Platform.OS === "ios" ? "padding" : "height"}
     >
       <Logo />
-      <Title text={"SignIn"} />
+      <Title text={"Sign In"} />
       <Input placeholder="lassana@mail.com" state={email} setState={setEmail} />
       <Input
         placeholder="mot de passe"

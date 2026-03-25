@@ -43,3 +43,4 @@ yarn-error.*
 
 # my ignored files to delete
 login0.js
+signup0.js
