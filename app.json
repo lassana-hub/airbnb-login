@@ -1,6 +1,7 @@
 {
   "expo": {
     "name": "airbnp-login",
+    "scheme": "myapp",
     "slug": "airbnp-login",
     "version": "1.0.0",
     "orientation": "portrait",
