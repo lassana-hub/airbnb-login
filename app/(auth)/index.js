@@ -1,4 +1,4 @@
-import { Link, useRouter } from "expo-router";
+import { useRouter } from "expo-router";
 import { Text, StyleSheet, KeyboardAvoidingView, Platform } from "react-native";
 
 import Logo from "../../components/Logo";
@@ -7,7 +7,7 @@ import Input from "../../components/Input";
 import MainButton from "../../components/MainButton";
 import RedirectButton from "../../components/RedirectButton";
 
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import axios from "axios";
 
 // Utilisation de context
@@ -22,7 +22,13 @@ export default function Login() {
   const router = useRouter();
 
   // Destruction de Context
-  const { login } = useContext(AuthContext);
+  const { userID, userToken, isLoading, login } = useContext(AuthContext);
+
+  useEffect(() => {
+    if (!isLoading && userToken && userID) {
+      router.replace("/(main)/home/rooms");
+    }
+  }, [isLoading, router, userID, userToken]);
 
   const handleSignIn = async () => {
     if (!email.trim() || !password.trim()) {
@@ -40,12 +46,11 @@ export default function Login() {
       );
 
       setErrorMessage("");
-
-      login(response.data.token, response.data.id);
+      // Stockage du token et id
+      const userToken = response.data.token;
+      const userID = response.data.id;
+      await login(userToken, userID);
       // alert("Login successful");
-
-      // accès au token (pour plus tard)
-      // const token = response.data.token;
     } catch (error) {
       setErrorMessage("Invalid email or password");
     }

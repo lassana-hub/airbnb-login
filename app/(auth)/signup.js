@@ -9,7 +9,7 @@ import MainButton from "../../components/MainButton";
 import RedirectButton from "../../components/RedirectButton";
 import { LargeInput } from "../../components/LargeInput";
 
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { useRouter } from "expo-router";
 
 // Utilisation de context
@@ -27,7 +27,13 @@ const Signup = () => {
   const router = useRouter();
 
   // Destruction de Context
-  const { login } = useContext(AuthContext);
+  const { userID, userToken, isLoading, login } = useContext(AuthContext);
+
+  useEffect(() => {
+    if (!isLoading && userToken && userID) {
+      router.replace("/(main)/home/rooms");
+    }
+  }, [isLoading, router, userID, userToken]);
 
   const handleSignUp = async () => {
     if (
@@ -60,7 +66,7 @@ const Signup = () => {
       setErrorMessage("");
       alert("Sign up successful");
       //  set token
-      login(response.data.token, response.data.id);
+      await login(response.data.token, response.data.id);
     } catch (error) {
       if (error.response && error.response.data) {
         setErrorMessage(error.response.data.error || "Sign up failed");

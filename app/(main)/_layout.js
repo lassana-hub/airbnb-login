@@ -5,7 +5,7 @@ const Layout = () => {
   // return <Tabs ></Tabs>
   // Ou
   // <Stack></Stack>
-  return <Tabs screenOptions={{ headerShown: false }}></Tabs>;
+  return <Tabs initialRouteName="home" screenOptions={{ headerShown: false }}></Tabs>;
 };
 
 export default Layout;
